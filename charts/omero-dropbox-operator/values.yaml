@@ -66,19 +66,28 @@ watch:
   
 defaultImportJob:
   configMapName: 'default-import-job-config'
-  omeroUserSecret:
-    username: 
-      name: 'omero-user-secret'
-      key: 'username'
-    password: 
-      name: 'omero-user-secret'
-      key: 'password'
   config.yaml: |
       image: ghcr.io/lavlabinfrastructure/omero-dropbox-worker
-      version:
-      command: ["echo", "$FILE", "$OMERO_USER", "$OMERO_PASS", "&&", "omero", "import", "$NEW_FILE"] 
+      version: ''
+      omeroUserSecret:
+        username: 
+          name: 'omero-connection-secret'
+          key: 'username'
+        password: 
+          name: 'omero-connection-secret'
+          key: 'password'
+        server:
+          name: 'omero-connection-secret'
+          key: 'server'
+        port:
+          name: 'omero-connection-secret'
+          key: 'port'
+      command: 
+        - "name=${FILE##*/};"
+        - "bioformats2raw $FILE /tmp/zarr &&" 
+        - "raw2ometiff /tmp/zarr /tmp/$name &&"
+        - "omero -u $OMERO_USER -w $OMERO_PASS -s $OMERO_SERVER -p $OMERO_PORT import /tmp/$name"] 
       env: []
       additionalMounts: []
-      configMapName: example-omerodropbox-job-config
 
   
