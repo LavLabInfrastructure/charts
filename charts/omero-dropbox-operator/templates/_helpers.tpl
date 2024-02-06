@@ -2,7 +2,7 @@
 Expand the name of the chart.
 */}}
 {{- define "omero-dropbox-operator.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
+{{- default 'omero-dropbox' .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
