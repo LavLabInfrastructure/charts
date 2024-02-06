@@ -46,3 +46,37 @@ spec:
       name: http
   selector:
     app: {{ include "omero-dropbox-operator.name" . }}-webhook
+
+{{- if .Values.webhook.serviceAccount.create }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "omero-dropbox-operator.webhookServiceAccountName" . }}
+  annotations:
+{{ toYaml .Values.webhook.serviceAccount.annotations | indent 4 }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: omero-dropbox-system
+  name: omero-dropbox-webhook-role
+rules:
+- apiGroups: ["", "apps", "batch"]
+  resources: ["pods", "deployments"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: omero-dropbox-webhook-rolebinding
+  namespace: omero-dropbox-system
+subjects:
+- kind: ServiceAccount
+  name: {{ include "omero-dropbox-operator.webhookServiceAccountName" . }}
+  namespace: omero-dropbox-system
+roleRef:
+  kind: Role
+  name: omero-dropbox-webhook-role
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
