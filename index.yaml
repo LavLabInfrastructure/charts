@@ -11,4 +11,14 @@ entries:
     urls:
     - https://github.com/helm/examples/releases/download/hello-world-0.1.0/hello-world-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-02T18:36:45.469704022Z"
+  omero-dropbox-operator:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2024-02-06T17:17:06.429773676Z"
+    description: A Helm chart for deploying omero-dropbox-operator
+    digest: b3dad2bfad0604902a5acc4446d800dfcc5db829796f4d7e7c83202dbdb8e09c
+    name: omero-dropbox-operator
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/omero-dropbox-operator-0.1.0/omero-dropbox-operator-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-02-06T17:17:06.429780279Z"
