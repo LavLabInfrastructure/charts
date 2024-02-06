@@ -4,4 +4,5 @@ metadata:
   name: {{ .Values.defaultImportJob.configMapName }}
 data:
   config.yaml: |
-    {{ .Values.defaultImportJob.config.yaml | nindent 4 }}
+   {{ index .Values.defaultImportJob "config.yaml" | nindent 4 }}
+
