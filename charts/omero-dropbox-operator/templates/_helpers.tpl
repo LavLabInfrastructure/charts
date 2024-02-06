@@ -2,29 +2,21 @@
 Expand the name of the chart.
 */}}
 {{- define "omero-dropbox-operator.name" -}}
-{{- default 'omero-dropbox' .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
+{{- default "omero-dropbox" .Chart.Name -}}
 {{- end -}}
 
 {{/*
-Create chart name and version as used by the chart label.
-*/}}
-{{- define "omero-dropbox-operator.chart" -}}
-{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-
-{{/*
-Generate the default fullname for resources.
-This uses the release name and the chart name.
+Create a default fully qualified app name.
 */}}
 {{- define "omero-dropbox-operator.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
-{{- $name := default .Chart.Name .Values.nameOverride -}}
+{{- $name := default "omero-dropbox" .Values.nameOverride -}}
 {{- if contains $name .Release.Name -}}
 {{- .Release.Name | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- printf "%s-%s" $name .Release.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}
