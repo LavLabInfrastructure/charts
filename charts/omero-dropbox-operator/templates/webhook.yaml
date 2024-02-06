@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "omero-dropbox-operator.fullname" . }}-webhook
+  labels:
+    {{- include "omero-dropbox-operator.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "omero-dropbox-operator.name" . }}-webhook
+  template:
+    metadata:
+      labels:
+        app: {{ include "omero-dropbox-operator.name" . }}-webhook
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      serviceAccountName: {{ .Values.webhook.serviceAccount.name | default (include "omero-dropbox-operator.serviceAccountName" .) }}
+      containers:
+        - name: webhook
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: MODE
+              value: "WEBHOOK"
+            - name: GUNICORN_WORKERS
+              value: "{{ .Values.webhook.env.GUNICORN_WORKERS }}"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "omero-dropbox-operator.fullname" . }}-webhook
+  labels:
+    {{- include "omero-dropbox-operator.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "omero-dropbox-operator.name" . }}-webhook
