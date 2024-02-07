@@ -44,7 +44,7 @@ metadata:
   name: omero-dropbox-operator-role
 rules:
 - apiGroups: ["", "apps", "batch"]
-  resources: ["pods", "deployments", "jobs"]
+  resources: ["pods", "deployments", "jobs", "events"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 - apiGroups: ["omero.lavlab.edu"]
   resources: ["omerodropboxes", "omerodropboxes/status"]
