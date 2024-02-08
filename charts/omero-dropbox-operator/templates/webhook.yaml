@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
-      serviceAccountName: {{ omero-dropbox-operator.webhookServiceAccountName }}
+      serviceAccountName: {{ include "omero-dropbox-operator.webhookServiceAccountName" . }}
       containers:
         - name: webhook
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
