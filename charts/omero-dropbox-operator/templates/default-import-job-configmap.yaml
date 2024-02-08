@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.defaultImportJob.configMapName }}
+  name: default-import-job-config
 data:
   config.yaml: |
    {{ index .Values.defaultImportJob "config.yaml" | nindent 4 }}

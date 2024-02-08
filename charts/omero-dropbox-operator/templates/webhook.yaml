@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
-      serviceAccountName: {{ .Values.webhook.serviceAccount.name | default (include "omero-dropbox-operator.serviceAccountName" .) }}
+      serviceAccountName: {{ omero-dropbox-operator.webhookServiceAccountName }}
       containers:
         - name: webhook
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -62,9 +62,13 @@ metadata:
   namespace: omero-dropbox-system
   name: omero-dropbox-webhook-role
 rules:
-- apiGroups: ["", "apps", "batch"]
-  resources: ["pods", "deployments"]
+- apiGroups: ["","omero.lavlab.edu"]
+  resources: ["configmaps", "omerodropboxes"]
   verbs: ["get", "list", "watch"]
+- apiGroups: ["", "batch"]
+  resources: ["pods", "jobs"]
+  verbs: ["get", "list", "watch", "create", "delete", "update", "patch"]
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

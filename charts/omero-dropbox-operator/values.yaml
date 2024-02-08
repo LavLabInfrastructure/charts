@@ -62,10 +62,9 @@ webhook:
 
 watch:
   env:
-    EXCLUDE_PATTERN: ""
+    EXCLUDE_PATTERN: "\.txt$"
   
 defaultImportJob:
-  configMapName: 'default-import-job-config'
   config.yaml: |
       image: ghcr.io/lavlabinfrastructure/omero-dropbox-worker
       version: ''

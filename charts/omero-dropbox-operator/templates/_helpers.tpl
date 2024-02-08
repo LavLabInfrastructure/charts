@@ -54,11 +54,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
-Generate the name for the service account to be used, either default or custom.
+Generate the name for the service account to be used, either default or custom
 */}}
 {{- define "omero-dropbox-operator.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-{{- default (include "omero-dropbox-operator.fullname" .) .Values.serviceAccount.name | trunc 63 | trimSuffix "-" -}}
+{{- printf "%s-operator" (default (include "omero-dropbox-operator.fullname" .) .Values.serviceAccount.name) | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
 {{- default "default" .Values.serviceAccount.name -}}
 {{- end -}}
