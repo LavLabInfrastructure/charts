@@ -85,7 +85,7 @@ defaultImportJob:
         - "name=${FILE##*/};"
         - "bioformats2raw $FILE /tmp/zarr &&" 
         - "raw2ometiff /tmp/zarr /tmp/$name &&"
-        - "omero -u $OMERO_USER -w $OMERO_PASS -s $OMERO_SERVER -p $OMERO_PORT import /tmp/$name"] 
+        - "omero -u $OMERO_USER -w $OMERO_PASS -s $OMERO_SERVER -p $OMERO_PORT import /tmp/$name"
       env: []
       additionalMounts: []
 
