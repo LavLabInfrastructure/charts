@@ -62,7 +62,7 @@ webhook:
 
 watch:
   env:
-    EXCLUDE_PATTERN: "\.txt$"
+    EXCLUDE_PATTERN: "\\.txt$"
   
 defaultImportJob:
   config.yaml: |
