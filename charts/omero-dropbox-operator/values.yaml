@@ -66,8 +66,7 @@ watch:
   
 defaultImportJob:
   config.yaml: |
-      image: ghcr.io/lavlabinfrastructure/omero-dropbox-worker
-      version: ''
+      image: ghcr.io/lavlabinfrastructure/omero-dropbox-worker:v1.0.2
       omeroUserSecret:
         username: 
           name: 'omero-connection-secret'
@@ -82,10 +81,17 @@ defaultImportJob:
           name: 'omero-connection-secret'
           key: 'port'
       command: 
-        - "name=${FILE##*/};"
-        - "bioformats2raw $FILE /tmp/zarr &&" 
-        - "raw2ometiff /tmp/zarr /tmp/$name &&"
-        - "omero -u $OMERO_USER -w $OMERO_PASS -s $OMERO_SERVER -p $OMERO_PORT import /tmp/$name"
+        - bash
+        - -c
+        # open bash command. FILE and OMERO_* variables are automatically handled. 
+        # converting, importing, and cleaning up must all be done in your command 
+        # bash && symbol is helpful for making sure file is not deleted if processing was not successful
+        - |
+          export name=${FILE%%*/}; 
+          bioformats2raw $FILE /tmp/zarr && 
+          raw2ometiff /tmp/zarr /tmp/$name && 
+          omero -u $OMERO_USERNAME -w $OMERO_PASSWORD -s $OMERO_SERVER -p $OMERO_PORT import /tmp/$name && 
+          rm $FILE
       env: []
       additionalMounts: []
 
