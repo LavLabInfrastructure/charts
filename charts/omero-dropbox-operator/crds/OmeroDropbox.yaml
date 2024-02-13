@@ -34,35 +34,6 @@ spec:
                               type: string
                             path:
                               type: string
-                    spec:
-                      type: object
-                      properties:
-                        image:
-                          type: string
-                        command:
-                          type: array
-                          items:
-                            type: string
-                        env:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                              value:
-                                type: string
-                        additionalMounts:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                              mountPath:
-                                type: string
-                              pvcName:
-                                type: string
-                        configMapName:
-                          type: string
+                    configMapName:
+                      type: string
               required: [ "watch" ]
