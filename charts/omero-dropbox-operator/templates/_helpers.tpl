@@ -68,12 +68,8 @@ Generate the name for the service account to be used, either default or custom
 Generate the name for the webhook's service account, handling creation flag and overrides.
 */}}
 {{- define "omero-dropbox-operator.webhookServiceAccountName" -}}
-{{- if .Values.webhook.serviceAccount.create -}}
-{{- if .Values.webhook.serviceAccount.name -}}
-{{- .Values.webhook.serviceAccount.name | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
+{{- if .Values.webhookServiceAccount.create -}}
 {{- printf "%s-webhook" (include "omero-dropbox-operator.fullname" .) | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
 {{- else -}}
 {{- default "default" .Values.webhook.serviceAccount.name -}}
 {{- end -}}
