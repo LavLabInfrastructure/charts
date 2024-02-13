@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "omero-dropbox-operator.webhookServiceAccountName" . }}
+  annotations:
+{{ toYaml .Values.webhook.serviceAccount.annotations | indent 4 }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: omero-dropbox-system
+  name: omero-dropbox-webhook-role
+rules:
+- apiGroups: ["","omero.lavlab.edu"]
+  resources: ["configmaps", "omerodropboxes"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["", "batch"]
+  resources: ["pods", "jobs"]
+  verbs: ["get", "list", "watch", "create", "delete", "update", "patch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: omero-dropbox-webhook-rolebinding
+  namespace: omero-dropbox-system
+subjects:
+- kind: ServiceAccount
+  name: {{ include "omero-dropbox-operator.webhookServiceAccountName" . }}
+  namespace: omero-dropbox-system
+roleRef:
+  kind: Role
+  name: omero-dropbox-webhook-role
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}

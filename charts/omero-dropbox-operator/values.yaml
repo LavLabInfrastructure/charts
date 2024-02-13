@@ -16,9 +16,6 @@ serviceAccount:
   create: true
   # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
 
 podAnnotations: {}
 
@@ -48,51 +45,46 @@ tolerations: []
 affinity: {}
 
 # Custom values for the webhook's functionality
-webhook:
-  env:
-    GUNICORN_WORKERS: "2"
-  serviceAccount:
+webhookServiceAccount:
     # Specifies whether a service account should be created
     create: true
     # Annotations to add to the service account
     annotations: {}
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
-    name: ""
 
 watch:
   env:
-    EXCLUDE_PATTERN: "\\.txt$"
+    EXCLUDE_PATTERN: "\\.txt$" # unfortunately need to escape the escape
   
 defaultImportJob:
   config.yaml: |
-      image: ghcr.io/lavlabinfrastructure/omero-dropbox-worker:v1.0.2
-      omeroUserSecret:
-        username: 
-          name: 'omero-connection-secret'
-          key: 'username'
-        password: 
-          name: 'omero-connection-secret'
-          key: 'password'
-        server:
-          name: 'omero-connection-secret'
-          key: 'server'
-        port:
-          name: 'omero-connection-secret'
-          key: 'port'
-      command: 
-        - bash
-        - -c
-        # open bash command. FILE and OMERO_* variables are automatically handled. 
-        # converting, importing, and cleaning up must all be done in your command 
-        # bash && symbol is helpful for making sure file is not deleted if processing was not successful
-        - |
-          export name=${FILE%%*/}; 
-          bioformats2raw $FILE /tmp/zarr && 
-          raw2ometiff /tmp/zarr /tmp/$name && 
-          omero -u $OMERO_USERNAME -w $OMERO_PASSWORD -s $OMERO_SERVER -p $OMERO_PORT import /tmp/$name && 
-          rm $FILE
-      env: []
-      additionalMounts: []
+    image: "ghcr.io/lavlabinfrastructure/omero-dropbox-worker:v1.0.6"
+    omeroUserSecret:
+      username: 
+        name: 'omero-connection-secret'
+        key: 'username'
+      password: 
+        name: 'omero-connection-secret'
+        key: 'password'
+      server:
+        name: 'omero-connection-secret'
+        key: 'server'
+      port:
+        name: 'omero-connection-secret'
+        key: 'port'
+    command:
+      - bash
+      - -c
+      - |
+        export name=${FILE##*/}; 
+        export name=${name%%.*};
+        export ds=${FILE%/*};
+        export ds=${ds##*/};
+        bioformats2raw --memo-directory=/tmp $FILE /tmp/zarr && 
+        raw2ometiff --rgb --compression=JPEG --quality=100 /tmp/zarr /tmp/${name}.ome.tiff && 
+        omero -u $OMERO_USERNAME -w $OMERO_PASSWORD -s $OMERO_SERVER -p $OMERO_PORT import -T Project:name:BRAIN/Dataset:name:$ds /tmp/${name}.ome.tiff && 
+        rm $FILE
+    env: []
+    additionalMounts: []
 
-  
+
+
