@@ -11,6 +11,15 @@ entries:
     - https://github.com/LavLabInfrastructure/charts/releases/download/omero-dropbox-operator-0.2.0-rc1/omero-dropbox-operator-0.2.0-rc1.tgz
     version: 0.2.0-rc1
   - apiVersion: v2
+    appVersion: v1.1.0-rc1
+    created: "2024-02-13T14:11:50.651009591Z"
+    description: A Helm chart for deploying omero-dropbox-operator
+    digest: 6ac8ac1f782b011f685f9b3dfe2e4f8de5e5737e6fecb3f221fa2423d6344539
+    name: omero-dropbox-operator
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/omero-dropbox-operator-0.2.0-rc.1/omero-dropbox-operator-0.2.0-rc.1.tgz
+    version: 0.2.0-rc.1
+  - apiVersion: v2
     appVersion: v1.0.23
     created: "2024-02-08T00:48:46.017581927Z"
     description: A Helm chart for deploying omero-dropbox-operator
@@ -64,4 +73,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/omero-dropbox-operator-0.1.0/omero-dropbox-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2024-02-13T13:52:03.442311795Z"
+generated: "2024-02-13T14:11:50.651068441Z"
