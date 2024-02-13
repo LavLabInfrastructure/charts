@@ -84,7 +84,10 @@ defaultImportJob:
         omero -u $OMERO_USERNAME -w $OMERO_PASSWORD -s $OMERO_SERVER -p $OMERO_PORT import -T Dataset:name:$ds /tmp/${name}.ome.tiff && 
         rm $FILE
     env: []
+    labels: []
+    annotations: []
     additionalMounts: []
+    additionalVolumes: []
 
 
 
