@@ -81,7 +81,7 @@ defaultImportJob:
         export ds=${ds##*/};
         bioformats2raw --memo-directory=/tmp $FILE /tmp/zarr && 
         raw2ometiff --rgb --compression=JPEG --quality=100 /tmp/zarr /tmp/${name}.ome.tiff && 
-        omero -u $OMERO_USERNAME -w $OMERO_PASSWORD -s $OMERO_SERVER -p $OMERO_PORT import -T Project:name:BRAIN/Dataset:name:$ds /tmp/${name}.ome.tiff && 
+        omero -u $OMERO_USERNAME -w $OMERO_PASSWORD -s $OMERO_SERVER -p $OMERO_PORT import -T Dataset:name:$ds /tmp/${name}.ome.tiff && 
         rm $FILE
     env: []
     additionalMounts: []
