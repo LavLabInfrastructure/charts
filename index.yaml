@@ -82,4 +82,28 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/omero-dropbox-operator-0.1.0/omero-dropbox-operator-0.1.0.tgz
     version: 0.1.0
-generated: "2024-02-13T14:15:08.012726315Z"
+  orthanc:
+  - apiVersion: v2
+    appVersion: 22.12.2
+    created: "2024-03-05T20:46:23.764257254Z"
+    dependencies:
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - orthanc-database
+      version: ~12.3.3
+    - condition: traefik.enabled
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      tags:
+      - orthanc-traefik
+      version: 26.0.x
+    description: A Helm chart for Kubernetes
+    digest: d82e79d9402166604c6e5d442515f00eda1e7c17009e87c6735f4163d1584664
+    name: orthanc
+    type: application
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-0.3.0/orthanc-0.3.0.tgz
+    version: 0.3.0
+generated: "2024-03-05T20:46:23.764290105Z"
