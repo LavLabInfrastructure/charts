@@ -1,0 +1,3 @@
+[submodule "submodules/korthweb"]
+	path = submodules/korthweb
+	url = https://github.com/digihunch/korthweb.git
