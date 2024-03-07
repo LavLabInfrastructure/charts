@@ -1,3 +1,6 @@
 [submodule "submodules/korthweb"]
 	path = submodules/korthweb
 	url = https://github.com/digihunch/korthweb.git
+[submodule "submodules/orthanc-helm"]
+	path = submodules/orthanc-helm
+	url = https://github.com/LavLabInfrastructure/orthanc-helm.git
