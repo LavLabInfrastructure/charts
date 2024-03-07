@@ -85,6 +85,16 @@ entries:
   orthanc:
   - apiVersion: v2
     appVersion: 22.12.2
+    created: "2024-03-07T19:06:52.372675627Z"
+    description: A Helm chart for Kubernetes
+    digest: c1ac398a3e3447dc016638069775ceea2633e35f197263a96982776a00368c65
+    name: orthanc
+    type: application
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-0.4.0/orthanc-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 22.12.2
     created: "2024-03-05T20:46:23.764257254Z"
     dependencies:
     - condition: postgresql-ha.enabled
@@ -106,4 +116,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-0.3.0/orthanc-0.3.0.tgz
     version: 0.3.0
-generated: "2024-03-05T20:46:23.764290105Z"
+generated: "2024-03-07T19:06:52.372717978Z"
