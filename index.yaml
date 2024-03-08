@@ -85,6 +85,16 @@ entries:
   orthanc:
   - apiVersion: v2
     appVersion: 24.3.3
+    created: "2024-03-08T17:25:01.194602155Z"
+    description: A Helm chart for Kubernetes
+    digest: 77fe6fff49914981251e18af1e9cafbccdd50c71198e604e04698a6a769bcdef
+    name: orthanc
+    type: application
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-0.4.4/orthanc-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
+    appVersion: 24.3.3
     created: "2024-03-08T16:34:01.022598023Z"
     description: A Helm chart for Kubernetes
     digest: be71fd12089eac9403e9a176b05fe97bfbbbeb13413b2cb3c8ff01d6a3316be6
@@ -146,4 +156,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-0.3.0/orthanc-0.3.0.tgz
     version: 0.3.0
-generated: "2024-03-08T16:34:01.022630083Z"
+generated: "2024-03-08T17:25:01.194656237Z"
