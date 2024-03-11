@@ -4,3 +4,6 @@
 [submodule "submodules/orthanc-helm"]
 	path = submodules/orthanc-helm
 	url = https://github.com/LavLabInfrastructure/orthanc-helm.git
+[submodule "charts/orthanc-helm"]
+	path = charts/orthanc-helm
+	url = https://github.com/LavLabInfrastructure/orthanc-helm
