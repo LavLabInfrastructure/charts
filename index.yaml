@@ -85,6 +85,16 @@ entries:
   orthanc:
   - apiVersion: v2
     appVersion: 24.3.3
+    created: "2024-03-13T20:43:54.595646979Z"
+    description: A Helm chart for Kubernetes
+    digest: a64504abbc295255db90f1922c34731dbc0268abf14d7662c81827bc2d4e17ec
+    name: orthanc
+    type: application
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-0.5.2/orthanc-0.5.2.tgz
+    version: 0.5.2
+  - apiVersion: v2
+    appVersion: 24.3.3
     created: "2024-03-13T15:09:22.421078589Z"
     description: A Helm chart for Kubernetes
     digest: 7a72e3bbc680eca12cb8e48e2f902f73a567b92c1c50a6b82c5f4f59ebe909d1
@@ -258,4 +268,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/triton-inference-server-1.0.0/triton-inference-server-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-13T17:11:02.369942451Z"
+generated: "2024-03-13T20:43:54.595779015Z"
