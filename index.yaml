@@ -250,6 +250,15 @@ entries:
   triton-inference-server:
   - apiVersion: v2
     appVersion: 24.02-py3
+    created: "2024-03-13T21:07:15.132336018Z"
+    description: Triton Inference Server
+    digest: 6bed42fcbe25537a44467a73222223820355894e8785b64a12006adb37a67e37
+    name: triton-inference-server
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/triton-inference-server-1.0.4/triton-inference-server-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 24.02-py3
     created: "2024-03-13T21:01:50.908596537Z"
     description: Triton Inference Server
     digest: b139931607d88d160dcb7f3c6b112f47943f27c04e0ecb22410b4314623d09bb
@@ -295,4 +304,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/triton-inference-server-1.0.0/triton-inference-server-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-13T21:01:50.908670174Z"
+generated: "2024-03-13T21:07:15.132429672Z"
