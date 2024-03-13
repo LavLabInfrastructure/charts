@@ -1,3 +1,6 @@
 [submodule "charts/orthanc"]
 	path = charts/orthanc
 	url = https://github.com/LavLabInfrastructure/orthanc-helm
+[submodule "charts/triton"]
+	path = charts/triton
+	url = https://github.com/barrettMCW/triton-helm
