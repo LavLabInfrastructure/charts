@@ -237,4 +237,25 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/orthanc-helm-0.4.5/orthanc-helm-0.4.5.tgz
     version: 0.4.5
-generated: "2024-03-13T15:09:22.421193374Z"
+  triton-inference-server:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-03-13T17:11:02.369902997Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      tags:
+      - loadBalancing
+      version: ~10.6.2
+    - name: prometheus-adapter
+      repository: https://prometheus-community.github.io/helm-charts
+      tags:
+      - autoscaling
+      version: ~3.0.0
+    description: Triton Inference Server
+    digest: 160888cd127057119eb171d4450237582b93d0578277ff6611c76d4e66b96939
+    name: triton-inference-server
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/triton-inference-server-1.0.0/triton-inference-server-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-03-13T17:11:02.369942451Z"
