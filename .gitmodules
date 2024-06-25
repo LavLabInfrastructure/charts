@@ -4,3 +4,6 @@
 [submodule "charts/triton"]
 	path = charts/triton
 	url = https://github.com/barrettMCW/triton-helm
+[submodule "charts/eaglescope-helm"]
+	path = charts/eaglescope-helm
+	url = https://github.com/LavLabInfrastructure/eaglescope-helm.git
