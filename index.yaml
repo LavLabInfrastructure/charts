@@ -3,6 +3,16 @@ entries:
   eaglescope:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2024-09-24T14:10:12.983831233Z"
+    description: A Helm chart for Eaglescope service
+    digest: 2bd4e32e5fe6c225f5db02571012456457153b80cee666f4fbcdc426ed316145
+    name: eaglescope
+    type: application
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/eaglescope-0.1.2/eaglescope-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2024-06-26T13:26:45.642115352Z"
     description: A Helm chart for Eaglescope service
     digest: dd65d363ca7988cc09395dd7ed03dd66094f944c530945cb9d70cabc8468896a
@@ -325,4 +335,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/triton-inference-server-1.0.0/triton-inference-server-1.0.0.tgz
     version: 1.0.0
-generated: "2024-06-26T13:26:45.642240196Z"
+generated: "2024-09-24T14:10:12.983904882Z"
