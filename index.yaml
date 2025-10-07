@@ -31,6 +31,17 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/eaglescope-0.1.0/eaglescope-0.1.0.tgz
     version: 0.1.0
+  lut-puller:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-10-07T15:12:01.063908323Z"
+    description: Cron-based Microsoft Graph LUT puller
+    digest: 7ee35af424459ee7980e45bca6170fe7cbd544a9cfca105b6ee853b453cac8cb
+    name: lut-puller
+    type: application
+    urls:
+    - https://github.com/LavLabInfrastructure/charts/releases/download/lut-puller-0.1.0/lut-puller-0.1.0.tgz
+    version: 0.1.0
   omero-dropbox-operator:
   - apiVersion: v2
     appVersion: v1.1.0-rc1
@@ -335,4 +346,4 @@ entries:
     urls:
     - https://github.com/LavLabInfrastructure/charts/releases/download/triton-inference-server-1.0.0/triton-inference-server-1.0.0.tgz
     version: 1.0.0
-generated: "2024-09-24T14:10:12.983904882Z"
+generated: "2025-10-07T15:12:01.063975889Z"
