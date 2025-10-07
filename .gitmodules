@@ -7,3 +7,6 @@
 [submodule "charts/eaglescope-helm"]
 	path = charts/eaglescope-helm
 	url = https://github.com/LavLabInfrastructure/eaglescope-helm.git
+[submodule "charts/lut-puller"]
+	path = charts/lut-puller
+	url = https://github.com/LavLabInfrastructure/lut-puller.git
